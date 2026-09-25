@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "复合技能证据通行证领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "STANDARD_PUBLISHED",
+        "EVIDENCE_ACCEPTED",
+        "PASSPORT_ISSUED",
+        "ACCESS_REVOKED",
+        "APPEAL_DECIDED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "skill_standard",
+        "evidence_item",
+        "competency_passport",
+        "job_requirement"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "EVIDENCE_ACCEPTED": [
+      "standard_version",
+      "observer_id"
+    ],
+    "PASSPORT_ISSUED": [
+      "recipient_scope",
+      "expires_at"
+    ],
+    "APPEAL_DECIDED": [
+      "affected_units",
+      "decision"
+    ]
+  },
+  "additionalProperties": false
+}

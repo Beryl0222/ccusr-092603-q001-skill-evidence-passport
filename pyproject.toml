@@ -1,0 +1,8 @@
+[project]
+name = "skill-evidence-passport"
+version = "0.1.0"
+description = "复合技能证据通行证领域契约"
+requires-python = ">=3.11"
+
+[tool.unittest]
+start-directory = "tests"
