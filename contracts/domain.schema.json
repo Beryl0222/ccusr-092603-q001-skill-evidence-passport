@@ -20,10 +20,17 @@
       "type": "string",
       "enum": [
         "STANDARD_PUBLISHED",
+        "JOB_REQUIREMENT_REGISTERED",
         "EVIDENCE_ACCEPTED",
         "PASSPORT_ISSUED",
+        "SHARING_GRANTED",
         "ACCESS_REVOKED",
-        "APPEAL_DECIDED"
+        "ACCESS_EXPIRED",
+        "APPEAL_FILED",
+        "APPEAL_DECIDED",
+        "SNAPSHOT_TAKEN",
+        "SNAPSHOT_DIFF_APPENDED",
+        "RECORD_FROZEN"
       ]
     },
     "aggregate_type": {
@@ -52,17 +59,78 @@
     }
   },
   "payload_required_by_event": {
-    "EVIDENCE_ACCEPTED": [
+    "STANDARD_PUBLISHED": [
+      "standard_id",
       "standard_version",
-      "observer_id"
+      "units"
+    ],
+    "JOB_REQUIREMENT_REGISTERED": [
+      "job_requirement_id",
+      "employer_id",
+      "standard_id",
+      "required_units"
+    ],
+    "EVIDENCE_ACCEPTED": [
+      "evidence_id",
+      "standard_id",
+      "standard_version",
+      "student_id",
+      "task_id",
+      "observer_id",
+      "supports_units",
+      "authorization"
     ],
     "PASSPORT_ISSUED": [
+      "student_id",
+      "standard_id",
+      "standard_version",
       "recipient_scope",
       "expires_at"
     ],
+    "SHARING_GRANTED": [
+      "passport_id",
+      "recipient_id",
+      "job_requirement_id",
+      "expires_at"
+    ],
+    "ACCESS_REVOKED": [
+      "passport_id",
+      "recipient_id"
+    ],
+    "ACCESS_EXPIRED": [
+      "passport_id",
+      "recipient_id"
+    ],
+    "APPEAL_FILED": [
+      "appeal_id",
+      "passport_id",
+      "affected_units",
+      "reason"
+    ],
     "APPEAL_DECIDED": [
+      "appeal_id",
+      "passport_id",
       "affected_units",
       "decision"
+    ],
+    "SNAPSHOT_TAKEN": [
+      "snapshot_id",
+      "passport_id",
+      "recipient_id",
+      "job_requirement_id",
+      "basis_version",
+      "conclusions"
+    ],
+    "SNAPSHOT_DIFF_APPENDED": [
+      "snapshot_id",
+      "passport_id",
+      "cause",
+      "changes"
+    ],
+    "RECORD_FROZEN": [
+      "original_hash",
+      "duplicate_hash",
+      "reason"
     ]
   },
   "additionalProperties": false

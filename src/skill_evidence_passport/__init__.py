@@ -1,5 +1,20 @@
-"""复合技能证据通行证领域契约。"""
+"""复合技能证据通行证。"""
 
 from .contracts import ContractIssue, validate_event
+from .service import (
+    AccessDeniedError,
+    DomainError,
+    FrozenConflictError,
+    PassportService,
+    Receipt,
+)
 
-__all__ = ["ContractIssue", "validate_event"]
+__all__ = [
+    "AccessDeniedError",
+    "ContractIssue",
+    "DomainError",
+    "FrozenConflictError",
+    "PassportService",
+    "Receipt",
+    "validate_event",
+]

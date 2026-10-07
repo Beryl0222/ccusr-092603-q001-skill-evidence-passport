@@ -2,8 +2,17 @@
   "event_id": "092507-001-sample-001",
   "event_type": "STANDARD_PUBLISHED",
   "aggregate_type": "skill_standard",
-  "aggregate_id": "skill_evidence_passport-001",
+  "aggregate_id": "wsi-mechatronics-2026",
   "occurred_at": "2026-09-24T12:00:00+08:00",
   "version": 1,
-  "payload": {}
+  "payload": {
+    "standard_id": "wsi-mechatronics-2026",
+    "standard_version": 1,
+    "units": [
+      {"unit_id": "unit-test", "title": "测试", "spec_hash": "spec-test-v1"},
+      {"unit_id": "unit-troubleshoot", "title": "设备排障", "spec_hash": "spec-tb-v1"},
+      {"unit_id": "unit-english-docs", "title": "英文资料使用", "spec_hash": "spec-en-v1"},
+      {"unit_id": "unit-safety", "title": "安全操作", "spec_hash": "spec-safe-v1"}
+    ]
+  }
 }
