@@ -42,6 +42,21 @@ class ContractTests(unittest.TestCase):
         issues = validate_event(event, self.schema)
         self.assertIn(("event_type", "unsupported_value"), [(issue.field, issue.code) for issue in issues])
 
+    def test_job_requirement_payload_is_required(self) -> None:
+        event = dict(self.sample, event_type="JOB_REQUIREMENT_PUBLISHED", aggregate_type="job_requirement", payload={})
+        issues = validate_event(event, self.schema)
+        self.assertIn(("payload.employer_id", "required"), [(issue.field, issue.code) for issue in issues])
+        self.assertIn(("payload.required_units", "required"), [(issue.field, issue.code) for issue in issues])
+
+    def test_job_requirement_event_is_accepted(self) -> None:
+        event = dict(
+            self.sample,
+            event_type="JOB_REQUIREMENT_PUBLISHED",
+            aggregate_type="job_requirement",
+            payload={"employer_id": "EMP-1", "required_units": ["U1"]},
+        )
+        self.assertEqual([], validate_event(event, self.schema))
+
 
 if __name__ == "__main__":
     unittest.main()

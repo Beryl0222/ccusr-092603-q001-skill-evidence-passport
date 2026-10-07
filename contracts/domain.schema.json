@@ -23,7 +23,8 @@
         "EVIDENCE_ACCEPTED",
         "PASSPORT_ISSUED",
         "ACCESS_REVOKED",
-        "APPEAL_DECIDED"
+        "APPEAL_DECIDED",
+        "JOB_REQUIREMENT_PUBLISHED"
       ]
     },
     "aggregate_type": {
@@ -63,6 +64,10 @@
     "APPEAL_DECIDED": [
       "affected_units",
       "decision"
+    ],
+    "JOB_REQUIREMENT_PUBLISHED": [
+      "employer_id",
+      "required_units"
     ]
   },
   "additionalProperties": false
